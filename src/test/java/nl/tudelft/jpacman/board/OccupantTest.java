@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test suite to confirm that {@link Unit}s correctly (de)occupy squares.
- *
- * @author Jeroen Roosen 
- *
  */
 class OccupantTest {
 
@@ -19,11 +16,19 @@ class OccupantTest {
     private Unit unit;
 
     /**
+     * The square used in the tests.
+     */
+    private Square square1;
+    private Square square2;
+
+    /**
      * Resets the unit under test.
      */
     @BeforeEach
     void setUp() {
         unit = new BasicUnit();
+        square1 = new BasicSquare();
+        square2 = new BasicSquare();
     }
 
     /**
@@ -31,8 +36,7 @@ class OccupantTest {
      */
     @Test
     void noStartSquare() {
-        // Remove the following placeholder:
-        assertThat(unit).isNotNull();
+        assertThat(unit.hasSquare()).isFalse();
     }
 
     /**
@@ -41,8 +45,8 @@ class OccupantTest {
      */
     @Test
     void testOccupy() {
-        // Remove the following placeholder:
-        assertThat(unit).isNotNull();
+        unit.occupy(square1);
+        assertThat(unit.getSquare()).isEqualTo(square1);
     }
 
     /**
@@ -51,7 +55,8 @@ class OccupantTest {
      */
     @Test
     void testReoccupy() {
-        // Remove the following placeholder:
-        assertThat(unit).isNotNull();
+        unit.occupy(square1);
+        unit.occupy(square2);
+        assertThat(unit.getSquare()).isEqualTo(square2);
     }
 }
